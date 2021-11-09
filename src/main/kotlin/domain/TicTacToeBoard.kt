@@ -4,7 +4,11 @@ import data.Player
 import data.Position
 import kotlin.math.abs
 
-class TicTacToeBoard {
+class TicTacToeBoard(private val gameId: Int) {
+
+    init {
+        println("New game started, game id: $gameId.")
+    }
 
     private val boardState = mutableMapOf<Position, Player?>(
         Position(0, 0) to null,
@@ -57,7 +61,7 @@ class TicTacToeBoard {
             .let { randomFreePosition ->
                 randomFreePosition?.let {
                     set(it, player)
-                    println("pickedRandom: ${boardState.forEach { elem -> println(elem.toPair()) }}")
+                    logPick(player, it)
                     it
                 }
 
@@ -70,7 +74,7 @@ class TicTacToeBoard {
             .let { freePositions ->
                 if (position in freePositions) {
                     set(position, player)
-                    println("pickedField: ${boardState.forEach { println(it.toPair()) }}")
+                    logPick(player, position)
                     position
                 } else {
                     null
@@ -78,4 +82,27 @@ class TicTacToeBoard {
             }
     }
 
+    private fun logPick(player: Player, position: Position) {
+        println("-------------------------------------------------")
+        println("Game id: $gameId.")
+        println("${player.name} picked $position.")
+        println("Board state:")
+        printBoard()
+        println()
+    }
+
+    private fun printBoard() {
+        for (row in 0..2) {
+            for (column in 0..2) {
+                print("${boardState[Position(row, column)].toBoardString()} ")
+            }
+            println()
+        }
+    }
+
+    private fun Player?.toBoardString(): String = when (this) {
+        Player.CLIENT -> "C"
+        Player.SERVER -> "S"
+        null -> "#"
+    }
 }

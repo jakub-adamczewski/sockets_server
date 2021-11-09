@@ -7,4 +7,5 @@ data class ServerToClientMessage(
     val column: Int?,
     val gameFinished: Boolean,
     val winner: Player?,
+    val gameId: Int
 )

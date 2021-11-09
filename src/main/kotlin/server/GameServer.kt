@@ -15,10 +15,11 @@ object GameServer {
 
         val portNumber = args[0].toInt()
 
+        println("Game server started.")
+
         try {
             while (true) {
                 ServerSocket(portNumber).use { serverSocket ->
-                    println("New client!")
                     GameThread(serverSocket.accept()).start()
                 }
             }

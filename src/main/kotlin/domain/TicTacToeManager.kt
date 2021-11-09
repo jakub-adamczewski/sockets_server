@@ -7,7 +7,8 @@ import messages.ServerToClientMessage
 
 class TicTacToeManager {
 
-    private val board = TicTacToeBoard()
+    private val gameId = hashCode()
+    private val board = TicTacToeBoard(gameId)
     private val gson = Gson()
 
     fun processInput(clientPickedPosition: String?): String = board.run {
@@ -21,7 +22,8 @@ class TicTacToeManager {
                     row = it?.row,
                     column = it?.column,
                     gameFinished = gameFinished,
-                    winner = winner
+                    winner = winner,
+                    gameId = gameId
                 ).let { message ->
                     gson.toJson(message)
                 }
