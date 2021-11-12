@@ -1,7 +1,7 @@
 package client
 
 import com.google.gson.Gson
-import messages.ServerToClientMessage
+import data.ServerToClientMessage
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

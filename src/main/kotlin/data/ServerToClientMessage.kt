@@ -1,4 +1,4 @@
-package messages
+package data
 
 import data.Player
 

@@ -1,9 +1,9 @@
-package domain
+package server.domain
 
 import com.google.gson.Gson
 import data.Player
 import data.Position
-import messages.ServerToClientMessage
+import data.ServerToClientMessage
 
 class TicTacToeManager {
 

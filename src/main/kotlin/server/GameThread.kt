@@ -1,8 +1,8 @@
 package server
 
 import com.google.gson.Gson
-import domain.TicTacToeManager
-import messages.ServerToClientMessage
+import server.domain.TicTacToeManager
+import data.ServerToClientMessage
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
