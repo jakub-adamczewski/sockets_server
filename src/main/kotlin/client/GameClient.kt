@@ -40,7 +40,8 @@ object GameClient {
 
                             val message = gson.fromJson(fromServer, ServerToClientMessage::class.java)
                             if (message.gameFinished) {
-                                println("Game finished, ${message.winner} won.")
+                                val result = if (message.winner == null) "draw" else "${message.winner} won"
+                                println("Game finished, $result.")
                                 break
                             }
 
